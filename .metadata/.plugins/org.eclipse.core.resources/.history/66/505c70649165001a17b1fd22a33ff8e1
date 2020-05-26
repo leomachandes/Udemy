@@ -1,0 +1,59 @@
+public class Avaliacao {
+
+	public static void calculaNumeroC(String primeiroNumero, String segundoNumero) {
+
+		String numeroCalculado = "";
+		int i = 0;
+	    int j = 0;
+
+	    loop: for (; i <= primeiroNumero.length();) {
+	        int proximoI = i + 1;
+	        if (proximoI <= primeiroNumero.length()) {
+	        	numeroCalculado+= primeiroNumero.substring(i, proximoI);
+	        }
+	        i++;	
+
+	        for (; j <= segundoNumero.length();) {
+	            int proximoJ= j + 1;
+	            if (proximoJ <= segundoNumero.length()) {
+	            	numeroCalculado+=segundoNumero.substring(j, proximoJ);
+	            }
+	            j++;
+	            continue loop;
+
+	        }
+	    }
+		imprimeNumeroCalculado(numeroCalculado);
+	}
+
+	private static void imprimeNumeroCalculado(String numeroCalculado) {
+		try{
+			int valor = Integer.valueOf(numeroCalculado.toString());
+			if (valor < 1000000) {
+				System.out.println("Valor de Saída: " + numeroCalculado);
+				return;
+			} 
+			valor = -1;
+			System.out.println("Número maior que 1.000.000:" + valor);
+		} catch (Exception ex) {
+			int valor = -1;
+			System.out.println("Ocorreu um erro na aplicação: "+ ex +" o valor de c é: "+valor);
+		}
+	}
+
+	public static void executaOperacao(String primeiroNumero, String segundoNumero) {
+		
+		if (primeiroNumero == null && segundoNumero == null) return;
+		
+		if(primeiroNumero.length() > segundoNumero.length()){
+			calculaNumeroC(primeiroNumero,segundoNumero);
+			return;
+		}
+		calculaNumeroC(segundoNumero, primeiroNumero);
+
+	}
+
+	public static void main(String[] args) {
+		executaOperacao("24", "1999");
+	}
+}

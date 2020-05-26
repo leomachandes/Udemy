@@ -1,0 +1,5 @@
+package com.mballem.curso.boot.web.validator;
+
+public class FuncionarioValidator {
+
+}

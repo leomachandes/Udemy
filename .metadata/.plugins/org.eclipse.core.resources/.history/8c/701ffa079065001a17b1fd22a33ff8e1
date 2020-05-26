@@ -1,0 +1,15 @@
+import ch.qos.logback.core.pattern.parser.Node;
+
+public class BinaryTree {
+
+	public static void calculaBinaryTree(BinaryTree left, BinaryTree right) {
+			
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		BinaryTree tree = new BinaryTree(); 
+		tree.r
+
+}

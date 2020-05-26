@@ -1,0 +1,70 @@
+
+public class BinaryTree {
+	
+	Node root;
+	static int sumLeft = 0;
+	static int sumRight = 0;
+	
+	private static Node addRecursive(Node current, int value) {
+	    if (current == null) {
+	        return new Node(value);
+	    }
+	 
+	    if (value < current.value) {
+	        current.left = addRecursive(current.left, value);
+	    } else if (value > current.value) {
+	        current.right = addRecursive(current.right, value);
+	    } else {
+	        return current;
+	    }
+	 
+	    return current;
+	}
+	
+	public void add(int value) {
+	    root = addRecursive(root, value);
+	}
+	
+	private static BinaryTree createBinaryTree() {
+	    BinaryTree bt = new BinaryTree();
+	 
+	    bt.add(6);
+	    bt.add(4);
+	    bt.add(8);
+	    bt.add(3);
+	    bt.add(5);
+	    bt.add(7);
+	    bt.add(9);
+	 
+	    return bt;
+	}
+	
+	public static void traverseInOrder(Node node) {
+        if (node != null) {
+            traverseInOrder(node.left);
+            sumLeft+= node.value;
+            traverseInOrder(node.right);
+            sumRight+= node.value;
+        }
+     }
+	
+	public static void main(String[] args) {
+		BinaryTree binaryTree = createBinaryTree();
+		traverseInOrder(binaryTree.root);
+		System.out.println("Total: " + (sumLeft + sumRight));
+		
+	}
+
+}
+
+class Node {
+    int value;
+    Node left;
+    Node right;
+ 
+    Node(int value) {
+        this.value = value;
+        right = null;
+        left = null;
+    }
+}

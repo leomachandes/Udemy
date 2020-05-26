@@ -1,0 +1,25 @@
+import ch.qos.logback.core.pattern.parser.Node;
+
+public class Avaliacao2 {
+
+	Node root;
+	
+	
+	public static void main(String[] args) {
+        
+        
+        class Node {
+            int value;
+            Node left;
+            Node right;
+         
+            Node(int value) {
+                this.value = value;
+                right = null;
+                left = null;
+            }
+        }
+	}
+}
+	
+	

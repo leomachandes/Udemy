@@ -1,0 +1,5 @@
+package com.mballem.curso.boot.web.error;
+
+public class MyErrorView {
+
+}
