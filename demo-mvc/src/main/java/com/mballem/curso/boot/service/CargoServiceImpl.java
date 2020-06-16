@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mballem.curso.boot.dao.CargoDao;
 import com.mballem.curso.boot.domain.Cargo;
+import com.mballem.curso.boot.util.PaginacaoUtil;
 
 @Transactional(readOnly = false)
 @Service
@@ -46,6 +47,12 @@ public class CargoServiceImpl implements CargoService {
 	@Override
 	public boolean cargoTemFuncionarios(Long id) {
 		return !buscarPorId(id).getFuncionarios().isEmpty();
+	}
+
+	@Override
+	public PaginacaoUtil<Cargo> buscarPorPagina(int pagina, String direcao) {
+		
+		return dao.buscaPaginada(pagina, direcao);
 	}
 
 }

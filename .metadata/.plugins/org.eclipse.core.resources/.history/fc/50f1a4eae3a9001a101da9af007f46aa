@@ -1,0 +1,10 @@
+package com.algaworks.ebookjpa.lojaveiculos.domain;
+
+import java.io.Serializable;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class VeiculoId implements Serializable {
+
+}

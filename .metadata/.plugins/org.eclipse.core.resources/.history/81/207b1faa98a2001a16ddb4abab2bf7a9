@@ -1,0 +1,16 @@
+package com.mballem.curso.boot.service;
+
+import java.util.ArrayList;
+
+public class A {
+
+
+    public static void main(String[] args) {
+        String prefix = "Maxi";
+        List<String> animals = new ArrayList<>();
+        animals.add("Cat");
+        animals.add("Dog");
+        prefix = "Ultra";
+        animals.stream().forEach(animal -> System.out.println(prefix + animal));
+    }
+}

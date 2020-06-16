@@ -1,0 +1,10 @@
+package com.mballem.curso.boot.service.prova;
+
+public interface ITestA extends ITest {
+	
+	default String process() {
+        return "Process A";
+    };
+	 
+
+}

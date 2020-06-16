@@ -1,0 +1,69 @@
+package com.algaworks.ebookjpa.lojaveiculos;
+
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.LocalDate;
+
+import javax.imageio.ImageIO;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import com.algaworks.ebookjpa.lojaveiculos.domain.Veiculo;
+import com.algaworks.ebookjpa.lojaveiculos.enumerator.TipoCombustivel;
+import com.algaworks.ebookjpa.lojaveiculos.util.JpaUtil;
+
+public class ExibindoImagem {
+	
+	public static void main(String[] args) throws IOException {
+		
+		Path path = FileSystems.getDefault()
+				.getPath("arquivos-extras/onix.jpg");
+		byte[] foto = Files.readAllBytes(path);
+
+		EntityManager manager = JpaUtil.getEntityManager();
+		EntityTransaction tx = manager.getTransaction();
+		tx.begin();
+		
+		Veiculo veiculo = new Veiculo();
+		veiculo.setFabricante("Hyundai");
+		veiculo.setModelo("ix35");
+		veiculo.setAnoFabricacao(2019);
+		veiculo.setAnoModelo(2020);
+		veiculo.setValor(new BigDecimal(100.000));
+		veiculo.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
+		veiculo.setDataCadastro(LocalDate.now());
+		veiculo.setFoto(foto);
+		
+		manager.persist(veiculo);
+		tx.commit();
+		manager.detach(veiculo);
+		
+		Veiculo veiculo2 = manager.find(Veiculo.class, veiculo.getCodigo());
+		
+		if (veiculo2.getFoto() != null) {
+			BufferedImage img = ImageIO.read(new ByteArrayInputStream(
+					veiculo2.getFoto()));
+			JOptionPane.showMessageDialog(null, new JLabel(
+					new ImageIcon(img)));
+		} else {
+			System.out.println("Veículo não possui foto.");
+		}
+		
+		manager.close();
+		JpaUtil.close();
+
+
+
+				
+				
+	}
+
+}

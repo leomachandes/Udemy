@@ -1,0 +1,15 @@
+package com.mballem.curso.boot.service.prova;
+
+public class Worker1 {
+	
+	System.out.println("Worker1 start");
+
+    try {
+        Thread.sleep(1000L);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+
+    System.out.println("Worker1 end");
+
+}

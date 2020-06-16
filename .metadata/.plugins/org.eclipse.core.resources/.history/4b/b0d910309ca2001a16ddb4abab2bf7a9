@@ -1,0 +1,9 @@
+package com.mballem.curso.boot.service.prova;
+
+public class A {
+	
+	 public String toString() {
+	        return getClass().getSimpleName();
+	    }
+
+}

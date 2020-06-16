@@ -1,0 +1,8 @@
+package com.algaworks.ebookjpa.lojaveiculos.domain;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class VeiculoId {
+
+}

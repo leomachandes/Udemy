@@ -1,0 +1,9 @@
+package com.mballem.curso.boot.service.prova;
+
+public class B extends A {
+	
+	 public String toString() {
+	        return super.toString() + getClass().getSimpleName();
+	    }
+
+}

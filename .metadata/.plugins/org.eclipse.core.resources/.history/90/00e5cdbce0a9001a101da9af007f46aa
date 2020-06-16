@@ -1,0 +1,21 @@
+package com.algaworks.ebookjpa.lojaveiculos;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import com.algaworks.ebookjpa.lojaveiculos.domain.Veiculo;
+import com.algaworks.ebookjpa.lojaveiculos.util.JpaUtil;
+
+public class ListandoVeiculos {
+	
+	public static void main(String[] args) {
+		EntityManager manager = JpaUtil.getEntityManager();
+		
+		Query query = manager
+				.createQuery("select v from Veiculo v");
+		List<Veiculo> veiculos = query.getResultList();
+	}
+
+}

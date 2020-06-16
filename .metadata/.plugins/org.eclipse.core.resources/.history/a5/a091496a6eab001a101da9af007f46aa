@@ -1,0 +1,36 @@
+package com.algaworks.ebookjpa.lojaveiculos;
+
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
+import com.algaworks.ebookjpa.lojaveiculos.domain.Veiculo;
+import com.algaworks.ebookjpa.lojaveiculos.util.JpaUtil;
+
+public class ExibindoImagem {
+	
+	Path path = FileSystems.getDefault()
+			.getPath("arquivos-extras/Hyundai-ix35.jpg");
+			byte[] foto = Files.readAllBytes(path);
+			EntityManager manager = JpaUtil.getEntityManager();
+			EntityTransaction tx = manager.getTransaction();
+			tx.begin;
+			
+			
+			Veiculo veiculo = new Veiculo();
+			veiculo.setFabricante("Hyundai");
+			veiculo.setModelo("ix35");
+			veiculo.setAnoFabricacao(2019);
+			veiculo.setAnoModelo(2020);
+			veiculo.setValor(new BigDecimal(100_000));
+			veiculo.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
+			veiculo.setDataCadastro(LocalDate.now());
+			veiculo.setFoto(foto);
+			manager.persist(veiculo);
+			tx.commit();
+
+
+}

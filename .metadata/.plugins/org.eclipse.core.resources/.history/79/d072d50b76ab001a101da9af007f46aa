@@ -1,0 +1,58 @@
+package com.algaworks.ebookjpa.lojaveiculos;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
+import com.algaworks.ebookjpa.lojaveiculos.domain.Proprietario;
+import com.algaworks.ebookjpa.lojaveiculos.domain.Veiculo;
+import com.algaworks.ebookjpa.lojaveiculos.enumerator.TipoCombustivel;
+import com.algaworks.ebookjpa.lojaveiculos.util.JpaUtil;
+
+public class PersistindoProprietario {
+	
+	public static void main(String[] args) {
+		EntityManager manager = JpaUtil.getEntityManager();
+		EntityTransaction tx = manager.getTransaction();
+		
+		tx.begin();
+		
+		Proprietario proprietario = new Proprietario();
+		proprietario.setNome("João das Couves");
+		proprietario.setTelefone("(34) 1234-5678");
+		manager.persist(proprietario);
+		
+		Veiculo veiculo1 = new Veiculo();
+		veiculo1.setFabricante("GM");
+		veiculo1.setModelo("Celta");
+		veiculo1.setAnoFabricacao(2015);
+		veiculo1.setAnoModelo(2015);
+		veiculo1.setValor(new BigDecimal(11.000));
+		veiculo1.setTipoCombustivel(TipoCombustivel.GASOLINA);
+		veiculo1.setDataCadastro(LocalDate.now());
+		veiculo1.setProprietario(proprietario);
+		
+		Veiculo veiculo2 = new Veiculo();
+		veiculo2.setFabricante("VW");
+		veiculo2.setModelo("Gol");
+		veiculo2.setAnoFabricacao(2018);
+		veiculo2.setAnoModelo(2018);
+		veiculo2.setValor(new BigDecimal(17.200));
+		veiculo2.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
+		veiculo2.setDataCadastro(LocalDate.now());
+		veiculo2.setProprietario(proprietario);
+		
+		manager.persist(veiculo2);
+		
+		tx.commit();
+		manager.close();
+		JpaUtil.close();
+
+		
+		
+
+	}
+
+}

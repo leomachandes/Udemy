@@ -1,0 +1,20 @@
+package com.mballem.curso.boot.service.prova;
+
+public class BattleShip<E> {
+	
+	public <T extends E> void fire(T t) {
+        if (t.getClass() == Missile.class) {
+            System.out.println("Launch");
+        } else if (t.getClass() == Shell.class) {
+            System.out.println("Fire");
+        }
+    }
+
+    public static void main(String[] args) {
+    	BattleShip<Object> battleShip = new BattleShip<>();
+        battleShip.fire(new Projectile());
+        battleShip.fire(new Missile());
+        battleShip.fire(new Shell());
+    }
+
+}

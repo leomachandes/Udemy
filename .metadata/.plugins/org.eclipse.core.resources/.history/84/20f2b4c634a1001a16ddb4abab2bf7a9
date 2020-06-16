@@ -1,0 +1,5 @@
+package com.mballem.curso.boot.util;
+
+public class PaginacaoUtil<T> {
+
+}

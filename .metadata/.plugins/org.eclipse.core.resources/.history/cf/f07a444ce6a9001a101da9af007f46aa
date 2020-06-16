@@ -1,0 +1,22 @@
+package com.algaworks.ebookjpa.lojaveiculos.domain;
+
+import java.io.Serializable;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class VeiculoId implements Serializable {
+	
+	private String placa;
+	private String cidade;
+	
+	
+	public VeiculoId() { }
+	
+	public VeiculoId(String placa, String cidade) {
+		super();
+		this.placa = placa;
+		this.cidade = cidade;
+	}
+
+}

@@ -1,0 +1,40 @@
+package com.algaworks.ebookjpa.lojaveiculos;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
+import com.algaworks.ebookjpa.lojaveiculos.domain.Acessorio;
+import com.algaworks.ebookjpa.lojaveiculos.util.JpaUtil;
+
+public class PersistindoAcessorio {
+	
+	public static void main(String[] args) {
+		
+		EntityManager manager = JpaUtil.getEntityManager();
+		EntityTransaction tx = manager.getTransaction();
+		tx.begin();
+		
+		// instancia acessórios
+		Acessorio roda = new Acessorio();
+		roda.setDescricao("Rodas de liga leve");
+		
+		Acessorio sensor = new Acessorio();
+		sensor.setDescricao("Sensores de estacionamento");
+		
+		Acessorio mp3 = new Acessorio();
+		mp3.setDescricao("MP3 Player");
+		
+		Acessorio pintura = new Acessorio();
+		pintura.setDescricao("Pintura metalizada");
+		
+		// persiste acessórios
+		manager.persist(roda);
+		manager.persist(sensor);
+		manager.persist(mp3);
+		manager.persist(pintura);
+
+		
+		
+	}
+
+}

@@ -1,0 +1,19 @@
+package com.algaworks.ebookjpa.lojaveiculos.domain;
+
+import java.math.BigDecimal;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class Veiculo {
+	
+	private Long codigo;
+	private	String fabricante;
+	private String modelo;
+	private Integer anoFabricacao;
+	private Integer anoModelo;
+	private BigDecimal valor;
+
+}

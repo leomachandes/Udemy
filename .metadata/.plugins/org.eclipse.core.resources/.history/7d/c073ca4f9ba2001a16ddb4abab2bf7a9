@@ -1,0 +1,14 @@
+package com.mballem.curso.boot.service.prova;
+
+public class Main {
+	
+	 public static void main(String[] args) {
+	        Thread t1 = new Thread(new Worker1());
+	        Thread t2 = new Thread(new Worker2(t1));
+
+	        t1.start();
+	        t2.start();
+	    }
+	}
+
+}

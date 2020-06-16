@@ -1,0 +1,23 @@
+package com.algaworks.ebookjpa.lojaveiculos;
+
+import javax.persistence.EntityManager;
+
+import com.algaworks.ebookjpa.lojaveiculos.domain.Proprietario;
+import com.algaworks.ebookjpa.lojaveiculos.util.JpaUtil;
+
+public class BuscaProprietario {
+	
+	public static void main(String[] args) {
+		
+		EntityManager manager = JpaUtil.getEntityManager();
+
+		Proprietario proprietario = manager.find(Proprietario.class, 1L);
+
+		System.out.println(proprietario.getVeiculo().getModelo() + " - "
+				+ proprietario.getNome());
+
+		manager.close();
+		JpaUtil.close();
+	}
+
+}
